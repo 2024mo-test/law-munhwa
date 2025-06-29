@@ -223,8 +223,31 @@
                 <a href="#" class="btn-content" data-toggle="modal" data-target="#modalGonghap">👉 예비 모의고사 종합</a>
             </div>
             <!-- 장별 템플릿 반복 끝 -->
-        </div>
+            <!-- 좌우 이동 버튼 -->
+            <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+                <button onclick="goToPrev()" style="
+                width: 80px;
+                height: 35px;
+                font-size: 15px;
+                padding: 6px 10px;
+                background-color: #e8e7e7;
+                border: 1px solid #e8e7e7; /* 배경색과 동일하게 */
+                border-radius: 6px;">
+                    ← 이전
+                </button>
+                <button onclick="window.location.href='https://blog.naver.com/lhj5268/223914822019'">
+                    실전 모의고사 이동 테스트
+                </button>
 
+            </div>
+        </div>
+        <script>
+            function goToPrev() {
+                // 이전 페이지 링크로 이동
+                window.location.href = "index.html";  // ← 원하는 URL로 교체
+            }
+
+        </script>
         <!-- 종합 모의고사 모달 -->
         <div class="modal fade" id="modalGonghap" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document" style="max-width: 550px;">
@@ -239,8 +262,8 @@
                             확인
                         </button>
                     </div>
-                    <div style="font-size: 14px; margin-bottom: 30px; line-height: 1.5;" >
-                        - 처음 아래, 암호 키 취득자 위                        
+                    <div style="font-size: 14px; margin-bottom: 30px; line-height: 1.5;">
+                        - 처음 아래, 암호 키 취득자 위
                     </div>
 
                     <!-- 질문 1 -->
@@ -307,24 +330,27 @@
                                 확인
                             </button>
                     </div>
-                    <div style="font-size: 14px; margin-bottom: 30px; line-height: 1.5;" >
-                        - 처음 아래, 암호 키 취득자 위                        
+                    <div style="font-size: 14px; margin-bottom: 30px; line-height: 1.5;">
+                        - 처음 아래, 암호 키 취득자 위
                     </div>
                     <!-- 질문 1 -->
                     <div style="margin-top: 3px; margin-bottom: 5px;">
-                        <label style="font-weight: normal; font-size: 16px; margin-top: 6px;">1. 귀하의 종합 모의고사 8개 암호키 중 숫자를 입력하세요.</label>
+                        <label style="font-weight: normal; font-size: 16px; margin-top: 6px;">1. 귀하의 종합 모의고사 8개 암호키 중
+                            숫자를 입력하세요.</label>
                         <input type="text" id="siljeonQ1" class="form-control form-control-sm" style="width: 140px;">
                     </div>
 
                     <!-- 질문 2 -->
                     <div style="margin-bottom: 10px;">
-                        <label style="font-weight: normal; font-size: 16px; margin-top: 6px;">2. 문화유산 방재의 날은 매년 2월 (<span style="display:inline-block; min-width:20px;">&nbsp;</span>)일이다,</label>
+                        <label style="font-weight: normal; font-size: 16px; margin-top: 6px;">2. 문화유산 방재의 날은 매년 2월
+                            (<span style="display:inline-block; min-width:20px;">&nbsp;</span>)일이다,</label>
                         <input type="text" id="siljeonQ2" class="form-control form-control-sm" style="width: 140px;">
                     </div>
 
                     <!-- 질문 3 -->
                     <div style="margin-bottom: 10px;">
-                        <label style="font-weight: normal; font-size: 16px; margin-top: 6px;">3. 귀하의 목표 점수는? (<span style="display:inline-block; min-width:20px;">&nbsp;</span>)점 만점 ! </label>
+                        <label style="font-weight: normal; font-size: 16px; margin-top: 6px;">3. 귀하의 목표 점수는? (<span
+                                style="display:inline-block; min-width:20px;">&nbsp;</span>)점 만점 ! </label>
                         <input type="text" id="siljeonQ3" class="form-control form-control-sm" style="width: 140px;">
                     </div>
 
@@ -378,7 +404,7 @@
 
                 // ✅ 원하는 암호키로 변경하세요
                 if (input === "100.") {
-                    window.location.href ="https://blog.naver.com/lhj5268/223914822019"; // 실제 실전 첫페이지로 링크
+                    window.location.href = "https://blog.naver.com/lhj5268/223914822019"; // 실제 실전 첫페이지로 링크
                 } else {
                     alert("암호키가 올바르지 않습니다.");
                 }
@@ -398,9 +424,9 @@
                     resultP.innerHTML = `❌ 다시 확인하세요.`;
                 }
             }
-
         </script>
 
+    </div>
 </body>
 
 </html>
