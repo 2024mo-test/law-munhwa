@@ -163,7 +163,16 @@
             -webkit-user-select: none;
             -ms-user-select: none;
         }
-    </style>   
+    </style>
+
+    <script>
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+        document.addEventListener('selectstart', function (e) {
+            e.preventDefault();
+        });
+    </script>
 
 </head>
 
