@@ -28,10 +28,10 @@
             background-color: #e0e0e0;
             margin: 0;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
+            display: block;
+            /* 기존 flex 대신 block 사용 */
+            height: auto;
+            /* min-height 제거 */
         }
 
         .container {
@@ -41,6 +41,7 @@
             padding: 5vw;
             margin-bottom: 30px;
             border-radius: 8px;
+            box-sizing: border-box;
         }
 
         .header {
@@ -201,6 +202,18 @@
 
             .modal-content {
                 width: 95%;
+            }
+        }
+
+        @media screen and (orientation: landscape) {
+            body {
+                padding: 40px;
+                font-size: 1.1rem;
+            }
+
+            .container {
+                max-width: 1000px;
+                padding: 40px;
             }
         }
     </style>
