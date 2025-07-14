@@ -3,92 +3,171 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <title>국가유산관련법령 모의고사</title>
+    <!-- 구글 폰트 추가 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- 구글 폰트 -->
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-
-    <!-- 부트스트랩 CSS -->
+    <!-- 부트스트랩 CSS 추가 -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- 부트스트랩 JS 및 jQuery -->
+    <!-- 부트스트랩 JS 및 제이쿼리 추가 -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
         * {
             font-family: "Gowun Dodum", sans-serif;
             color: black;
-            box-sizing: border-box;
         }
 
         body {
             background-color: #e0e0e0;
+            /* 전체 배경 명암 처리 */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
             margin: 0;
-            padding: 20px;
-            display: block;
-            /* 기존 flex 대신 block 사용 */
-            height: auto;
-            /* min-height 제거 */
+            padding-top: 20px;
         }
 
+        /* 전체 컨테이너 */
         .container {
-            width: 100%;
-            max-width: 800px;
+            width: 25cm;
+            /* 전체 시험지 크기 */
             background-color: white;
-            padding: 5vw;
-            margin-bottom: 30px;
-            border-radius: 8px;
+            /* 시험지 영역을 화이트로 */
+            margin: 0 auto;
+            /* 중앙 정렬 */
+            padding: 50px;
             box-sizing: border-box;
+            margin-bottom: 30px;
         }
 
+        /* 페이지 하단의 이전/다음 버튼 */
+        .footer {
+            position: absolute;
+            bottom: -60px;
+            /* 문제지 박스 외곽 경계선 아래에 위치 */
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            /* 버튼과 좌우 화면 끝 사이 간격 */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            width: auto;
+            /* 버튼의 너비가 경계선을 넘지 않게 자동으로 조정 */
+        }
+
+        /* 헤드 영역 */
         .header {
             width: 100%;
+            max-width: 24cm;
+            /* 18cm로 고정된 시험지 폭 */
             height: 50px;
             border: 2px solid black;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-top: 8px;
+            /* 상단 패딩 */
+
+            box-sizing: border-box;
             background-color: rgba(220, 220, 220, 0.5);
-            padding: 0 20px;
-            margin-bottom: 20px;
+            /* 약한 회색 배경 */
+            line-height: 50px;
         }
 
+        .left-header {
+            padding-left: 20px;
+            /* 좌측 텍스트를 안으로 넣음 */
+        }
+
+        .right-header {
+            padding-right: 40px;
+            /* 우측 텍스트를 안으로 넣음 */
+        }
+
+        /* 문제 영역의 좌우 배치 대신 위아래 배치 */
         .problem-area {
-            font-size: 1rem;
+            width: 22cm;
+            border: none;
+            /* 외곽 경계선 제거 */
+            padding: 40px;
+            box-sizing: border-box;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            /* 세로 방향으로 배치 */
+            position: relative;
+            font-size: 17px !important;
         }
 
+        /* 문제 영역에 임시 배경 컬러 추가 */
         .question {
+            margin-bottom: 23px !important;
+            /* 질문지와 질문지 사이 간격 줄이기 */
+            padding: 5px;
             background-color: transparent;
-            padding: 10px;
+            /* 문제 내부는 흰색으로 강조 */
+
+            box-sizing: border-box;
         }
 
+        /* 질문 텍스트 줄바꿈 설정 */
         .question p {
             margin: 8px;
+            /* 질문지와 답지 사이 간격 줄이기 */
             text-indent: -1em;
+            /* 질문 번호 바로 아래에서 시작되지 않도록 */
             padding-left: 0.5em;
+            /* 첫 줄 이후 줄 시작을 동일하게 맞춤 */
         }
 
+        .choices {
+            margin-top: 0px !important;
+            /* 질문지와 답지 사이 간격을 줄이기 */
+        }
+
+        /* 선택지 텍스트 줄바꿈 설정 */
         .choices .choice {
             text-indent: -1.5em;
+            /* 선택지 번호 바로 아래에서 줄이 시작되지 않도록 */
             padding-left: 2em;
+            /* 첫 줄 이후 줄 시작을 동일하게 맞춤 */
             margin-bottom: 5px;
         }
 
+        /* 선택지 버튼 활성화 */
         .choice-button {
             width: 30px;
+            /* 선택지 버튼의 넓이 */
             height: 30px;
+            /* 선택지 버튼의 높이 */
             line-height: 30px;
+            /* 텍스트를 중앙에 배치 */
             text-align: center;
+            /* 텍스트 중앙 정렬 */
             border-radius: 50%;
+            /* 둥근 버튼 */
+            padding: 0;
+            /* 추가 여백 없음 */
             margin-right: 5px;
+            /* 선택지 텍스트와의 간격 */
             cursor: pointer;
+            box-sizing: border-box;
+            /* 테두리와 내부 여백을 포함한 크기 정의 */
             position: relative;
+            /* ✔ 표시 위치 기준 */
         }
 
         .choice-button.selected::after {
@@ -97,8 +176,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -45%);
+            /* 중심에서 약간 위 */
             font-size: 19px;
             font-weight: bold;
+
             pointer-events: none;
         }
 
@@ -106,20 +187,30 @@
             color: black;
         }
 
+        /* 오답인 경우 (빨강) */
         .choice-button.selected.incorrect::after {
             color: red;
         }
 
+        /* 버튼에 마우스를 올렸을 때 투명한 원형 실선 유지 */
+        .choice-button:hover {
+            border-color: transparent;
+            /* 여전히 투명 */
+        }
+
         .choices-horizontal {
             display: flex;
+            justify-content: space-between;
             flex-wrap: wrap;
+            /* 줄바꿈 허용 (선택사항); 2유형 */
             gap: 10px;
         }
 
         .choices-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px 20px;
+            gap: 5px 20px;
+            /* 세로(위 아래 간격) 10px, 가로(좌우 간격) 30px 간격 ; 3유형 */
         }
 
         .modal {
@@ -138,115 +229,123 @@
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 90%;
-            max-width: 400px;
+            width: 13cm;
+            /* 가로 13cm */
+            height: 7cm;
+            /* 세로 7cm */
             border-radius: 10px;
+            /* 각 모서리 레디우스 10px */
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            /* 상단 약한 명암 처리 */
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
+            /* 좌우 정렬 */
             align-items: center;
+            /* 내용 수직 중앙 정렬 */
             font-size: 20px;
+            /* 상단 폰트 크기 */
             font-weight: bold;
             padding-bottom: 10px;
             border-bottom: 1px solid lightgray;
-        }
-
-        .modal-body {
-            padding: 6px;
-            font-size: 16px;
-            line-height: 1.5;
+            /* 상단 구분선 */
+            height: 40px;
+            /* 상단의 높이 고정 */
         }
 
         .modal-footer {
             display: flex;
             justify-content: flex-end;
+            /* 확인 버튼 우측 정렬 */
+            border-top: none;
+            /* 보이지 않게 투명 처리 */
+        }
+
+        .modal-body {
+            padding: 6px;
+            font-size: 16px;
+            /* 텍스트 폰트 크기 */
+            line-height: 1.5;
+            /* 줄 간격 설정 */
         }
 
         button.confirm-button {
-            width: 60px;
+            width: 50px;
+            /* 버튼의 너비 */
             height: 30px;
+            /* 버튼의 높이 */
+            padding: 3px 3px;
+            /* 내부 여백 조정 */
+            margin: 0;
+            /* 외부 여백 제거 */
+            line-height: normal;
+            /* 텍스트가 중앙에 위치하도록 */
             border-radius: 10px;
+            /* 모서리 둥글게 */
             background-color: rgb(161, 160, 160);
+            /* 버튼 배경색 (녹색) */
             color: white;
+            /* 버튼 글씨색 */
             font-size: 16px;
+            /* 폰트 크기 */
             border: none;
+            /* 테두리 제거 */
             cursor: pointer;
+            /* 커서 모양 변경 */
         }
 
         button.confirm-button:hover {
             background-color: #45a049;
+            /* 마우스 오버 시 버튼 색상 */
         }
 
         .close {
             color: #aaa;
+            float: right;
             font-size: 28px;
             font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
             cursor: pointer;
         }
-
-        .close:hover {
-            color: black;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 16px;
-                margin: 10px auto;
-            }
-
-            .problem-area {
-                font-size: 1rem;
-                line-height: 1.6;
-            }
-
-            .choices-grid {
-                grid-template-columns: 1fr;
-                /* 모바일에서 선택지를 한 줄로 배치 */
-            }
-
-            .modal-content {
-                width: 95%;
-                padding: 15px;
-            }
-
-            .choice-button {
-                width: 28px;
-                height: 28px;
-                font-size: 14px;
-            }
-        }
-
-        @media screen and (orientation: landscape) {
-            body {
-                padding: 40px;
-                font-size: 1.1rem;
-            }
-
-            .container {
-                max-width: 1000px;
-                padding: 40px;
-            }
-        }
     </style>
-
     <script>
         function handleChoiceClick(element, isCorrect, modalId) {
-            const questionBox = element.closest('.question');
+            const questionBox = element.closest('.question'); // 해당 문제 영역
             const buttons = questionBox.querySelectorAll('.choice-button');
-            buttons.forEach(btn => btn.classList.remove('selected', 'correct', 'incorrect'));
+
+            // 기존 선택 해제 및 클래스 제거
+            buttons.forEach(btn => {
+                btn.classList.remove('selected', 'correct', 'incorrect');
+            });
+
+            // 새 선택 적용
             element.classList.add('selected');
-            element.classList.add(isCorrect ? 'correct' : 'incorrect');
+            if (isCorrect) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+
+            // 정오답 처리
             const answerText = document.getElementById(modalId).querySelector('#answerText');
             answerText.textContent = isCorrect ? '정답입니다!' : '오답입니다.';
             document.getElementById(modalId).style.display = "block";
         }
-
+    </script>
+    <script>
         function openAnswerModal(isCorrect, modalId) {
+            // 정답 여부 설정
             const answerText = document.getElementById(modalId).querySelector('#answerText');
             answerText.textContent = isCorrect ? '정답입니다!' : '오답입니다.';
+
+            // 모달창 열기
             document.getElementById(modalId).style.display = "block";
         }
 
@@ -254,9 +353,23 @@
             document.getElementById(modalId).style.display = "none";
         }
 
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('selectstart', e => e.preventDefault());
     </script>
+    <style>
+        body {
+            user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+    <script>
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+        document.addEventListener('selectstart', function (e) {
+            e.preventDefault();
+        });
+    </script>
+
 </head>
 
 <body>
