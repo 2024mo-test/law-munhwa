@@ -193,15 +193,29 @@
 
         @media (max-width: 600px) {
             .container {
-                padding: 20px;
+                padding: 16px;
+                margin: 10px auto;
             }
 
             .problem-area {
-                font-size: 0.95rem;
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .choices-grid {
+                grid-template-columns: 1fr;
+                /* 모바일에서 선택지를 한 줄로 배치 */
             }
 
             .modal-content {
                 width: 95%;
+                padding: 15px;
+            }
+
+            .choice-button {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
             }
         }
 
